@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  @apply bg-rollbar-bg-dark text-white font-body;
+  margin: 0;
+  padding: 0;
+  line-height: 1.45;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-header;
+  font-weight: 600;
+}
+
+h1 {
+  @apply text-rollbar-yellow;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+h2 {
+  @apply text-white;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+p {
+  @apply text-rollbar-gray-text;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Hero Section Styles */
+.hero-background {
+  background: radial-gradient(55% 88% at 27.8% 15.7%, #2c3758 0%, #282f3e 100%);
+}
+
+.hero-section {
+  max-width: 700px;
+}
+
+.hero-title {
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.gradient-text {
+  background-image: linear-gradient(90deg, rgb(225, 227, 56) 0%, rgb(243, 148, 96) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Token Banner Styles */
+.token-banner {
+  background: transparent;
+  border: 1px solid white;
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+/* Button Styles */
+.btn-blue {
+  background: rgb(56, 112, 255);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-blue:hover {
+  background: rgb(40, 96, 235);
+  transform: translateY(-1px);
+}
+
+.btn-blue-lg {
+  background: rgb(56, 112, 255);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-blue-lg:hover {
+  background: rgb(40, 96, 235);
+}
+
+.btn-blue-lg:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid #343F55;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-outline:hover {
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+/* Event Button Styles */
+.event-btn {
+  background: rgb(56, 112, 255);
+  color: white;
+  border: 2px solid rgb(56, 112, 255);
+  padding: 8px 20px;
+  border-radius: 32px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.event-btn:hover {
+  background: rgb(40, 96, 235);
+  border-color: rgb(40, 96, 235);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(56, 112, 255, 0.3);
+}
+
+.event-btn:active {
+  transform: scale(0.98);
+}
+
+.event-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Session Replay Toggle Styles */
+.session-replay-toggle {
+  position: relative;
+  width: 60px;
+  height: 32px;
+  background: #343F55;
+  border: 2px solid #343F55;
+  border-radius: 32px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.session-replay-toggle:hover {
+  border-color: #4484FF;
+}
+
+.session-replay-toggle.active {
+  background: rgb(56, 112, 255);
+  border-color: rgb(56, 112, 255);
+}
+
+.toggle-switch {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 24px;
+  height: 24px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  display: block;
+}
+
+.session-replay-toggle.active .toggle-switch {
+  transform: translateX(28px);
+}
+
+.recording-indicator {
+  width: 12px;
+  height: 12px;
+  background: #ef4444;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+  margin-left: auto;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1);
+  }
+}
+
+/* Footer Styles */
+.footer-container {
+  position: relative;
+  margin-top: 80px;
+}
+
+.footer-pattern {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: url('/bottom pattern.png');
+  background-size: 50%;
+  background-position: bottom center;
+  background-repeat: repeat-x;
+  height: 300px;
+  width: 100%;
+}
