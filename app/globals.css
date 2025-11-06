@@ -229,7 +229,7 @@ p {
   left: 0;
   right: 0;
   background-image: url('/bottom pattern.png');
-  background-size: 50%;
+  background-size: 40%;
   background-position: bottom center;
   background-repeat: repeat-x;
   height: 300px;

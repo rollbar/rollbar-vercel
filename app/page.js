@@ -19,7 +19,7 @@ export default function Home() {
       <main className="pt-[100px] px-5 pb-5">
         <div className="max-w-[1200px] mx-auto">
           <div className="hero-section mb-10">
-            <h1 className="hero-title mt-[100px] mb-2.5">
+            <h1 className="hero-title mt-[40px] mb-2.5">
               <span className="text-white">Ship Faster </span><br />
               <span className="gradient-text">
                 with Confidence

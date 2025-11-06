@@ -46,7 +46,7 @@ export default function Header() {
 
               {/* Documentation button */}
               <a
-                href="https://docs.rollbar.com"
+                href="https://docs.rollbar.com/docs/vercel"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-blue"
