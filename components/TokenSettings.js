@@ -87,7 +87,7 @@ export default function TokenSettings({ isOpen, onClose }) {
               <strong className="text-white">Getting Started:</strong>
             </p>
             <ol className="text-sm text-rollbar-gray-text mt-2 ml-4 space-y-1">
-              <li>1. Go to your integration settings page in Vercel</li>
+              <li>1. Visit the Getting Started of your project's Rollbar integration page</li>
               <li>2. Find token with <strong className="text-white">CLIENT_TOKEN</strong> scope</li>
               <li>3. Copy the token and paste it above</li>
               <li>4. Click "Save Token" to start sending events and Replay</li>
