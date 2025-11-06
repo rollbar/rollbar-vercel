@@ -6,6 +6,9 @@
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Frollbar%2Frollbar-vercel)
 
+
+<img width="1148" height="819" alt="Screenshot 2025-11-06 at 10 26 08 AM" src="https://github.com/user-attachments/assets/69dad8b0-85d5-4805-b956-c7579f2ac2aa" />
+
 ## What This Demonstrates
 
 This demo app shows how to:
