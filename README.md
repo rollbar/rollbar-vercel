@@ -4,6 +4,8 @@
 
 **🌐 Public Demo**: This app can be deployed as a public demo where users can configure their own Rollbar tokens via the UI (stored in localStorage). Perfect for live demos, workshops, or self-service trials!
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Frollbar%2Frollbar-vercel)
+
 ## What This Demonstrates
 
 This demo app shows how to:
@@ -13,6 +15,8 @@ This demo app shows how to:
 - Display event history in an interactive slideout panel
 - Use client-side only event tracking (in-memory storage)
 - Allow users to configure their own Rollbar tokens (for public demos)
+
+**Note:** This app is designed to work as a **public demo** where users can configure their own Rollbar tokens without requiring environment variables or deployment configuration.
 
 ## Prerequisites
 
@@ -46,9 +50,9 @@ NEXT_PUBLIC_ROLLBAR_ENV=development
 
 To get your Rollbar client token:
 1. Log in to [Rollbar](https://rollbar.com)
-2. Navigate to Settings → Project Access Tokens
+2. Navigate to Project Settings → Project Name -> Project Access Tokens
 3. Find or create a token with `post_client_item` scope
-4. Copy the token value
+4. Copy the token value and add it to you .env file
 
 ### 3. Run the Development Server
 
@@ -92,14 +96,15 @@ This project is already configured with:
 ### Local Production Build with Source Maps
 
 1. Get your **server-side** Rollbar token (different from client token):
-   - Go to [Rollbar Settings → Access Tokens](https://rollbar.com/settings/account/access-tokens/)
+   - Go to Project Settings → Project Name -> Project Access Tokens
    - Find or create a token with `post_server_item` scope
    - Copy the token value
 
+ 
 2. Add to `.env.local`:
 ```env
 ROLLBAR_SERVER_TOKEN=your_server_token_here
-BASE_URL=http://localhost:3000
+BASE_URL=https://your-app.vercel.app
 ```
 
 3. Build and upload source maps:
@@ -142,30 +147,7 @@ npm run build:production
 - Source maps are **not included** in your deployed bundle (they're uploaded to Rollbar separately)
 - Without `ROLLBAR_SERVER_TOKEN`, the build will still succeed but skip source map uploads
 
-## Using as a Public Demo
 
-This app is designed to work as a **public demo** where users can configure their own Rollbar tokens without requiring environment variables or deployment configuration.
-
-### For Demo Visitors
-
-1. Visit the deployed demo app
-2. Click the **Settings** button in the header
-3. Enter your Rollbar Client Access Token:
-   - Go to [Rollbar Settings → Access Tokens](https://rollbar.com/settings/account/access-tokens/)
-   - Copy a token with `post_client_item` scope
-   - Paste it in the settings modal
-4. Click "Save Token"
-5. Start sending events!
-
-The token is stored in your browser's localStorage and will persist across page reloads. It's never sent to any server other than Rollbar's API.
-
-### For Demo Hosts
-
-You can deploy this to Vercel (or any hosting platform) **without configuring any environment variables**. The entire demo is self-service - each visitor configures their own token.
-
-**Optional**: You can still set `NEXT_PUBLIC_ROLLBAR_CLIENT_TOKEN` in your deployment environment as a default/fallback token for quick testing.
-
-## How to Use the Demo
 
 ### Sending Events
 
@@ -184,14 +166,15 @@ The demo provides four types of events you can send to Rollbar:
 4. The slideout displays:
    - Event level/type with color-coded badges
    - Rollbar item UUID (unique identifier for each event)
-   - Status (sent, queued, or error)
+   - Network Status of request
    - Timestamp of when the event was sent
 
 ### Verifying in Rollbar
 
 After sending events:
+
 1. Log in to your Rollbar dashboard
-2. Navigate to Items → All Items
+2. Navigate to Items -> Select your project in the filter.
 3. You should see the events appear in real-time
 4. Click on any item to see full details
 
@@ -223,8 +206,8 @@ rollbar-vercel/
 │   └── page.js              # Home page with demo controls
 ├── components/
 │   ├── EventControls.js     # Main control panel with buttons
-│   ├── EventSlideout.js     # Event history slideout
-│   └── Header.js            # Simple header with logo
+│   ├── EventSlideout.js     # Event history slide out
+│   └── Header.js            # Simple header with logos
 ├── lib/
 │   ├── rollbarClient.js     # Rollbar SDK initialization
 │   └── time.js              # Timestamp and UUID utilities
@@ -250,6 +233,7 @@ rollbar-vercel/
 ### Rollbar Documentation
 
 - [Rollbar JavaScript SDK](https://docs.rollbar.com/docs/javascript)
+- [Next.js Guide](https://docs.rollbar.com/docs/nextjs)
 - [Browser JavaScript Guide](https://docs.rollbar.com/docs/browser-js)
 - [Client Access Tokens](https://docs.rollbar.com/docs/access-tokens#post_client_item)
 - [Item Levels](https://docs.rollbar.com/docs/items#item-levels)
@@ -267,7 +251,7 @@ rollbar-vercel/
 - Verify your `NEXT_PUBLIC_ROLLBAR_CLIENT_TOKEN` is correct
 - Check browser console for errors
 - Ensure the token has `post_client_item` scope
-- Check network tab for failed requests to Rollbar API
+- Check network tab for failed requests to Rollbar API.  /items should have a 200 status
 
 ### Build Errors
 
@@ -275,19 +259,6 @@ rollbar-vercel/
 - Delete `.next` folder and `node_modules`, then reinstall
 - Verify Node.js version is 18.x or higher
 
-### Vercel Deployment Issues
-
-- Double-check environment variables are set in Vercel dashboard
-- Ensure variables start with `NEXT_PUBLIC_` prefix
-- Check Vercel build logs for specific errors
-
 ## License
 
 This is a demo project for educational purposes. Feel free to use and modify as needed.
-
-## Support
-
-For issues with:
-- **This demo**: Open an issue in the project repository
-- **Rollbar SDK**: Visit [Rollbar Support](https://rollbar.com/docs/)
-- **Next.js**: Check [Next.js Documentation](https://nextjs.org/docs)
