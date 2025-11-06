@@ -25,7 +25,7 @@ This demo app shows how to:
 ### 1. Install Dependencies
 
 ```bash
-cd rollbar-nextjs
+cd rollbar-vercel
 npm install
 ```
 
@@ -216,7 +216,7 @@ This demo uses only Rollbar's browser SDK with a client access token. For produc
 ## Project Structure
 
 ```
-rollbar-nextjs/
+rollbar-vercel/
 ├── app/
 │   ├── globals.css          # Global styles with Tailwind
 │   ├── layout.js            # Root layout component
