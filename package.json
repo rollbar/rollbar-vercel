@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "dotenv": "^17.2.3",
-    "next": "15.4.8",
+    "next": "15.4.9",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "rollbar": ">=3.0.0-rc.1"
