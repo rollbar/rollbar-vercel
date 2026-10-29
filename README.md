@@ -122,11 +122,16 @@ This will:
 
 ### Vercel Deployment with Source Maps
 
+With the Rollbar Vercel integration installed, the build gets a short-lived server token through Vercel's OIDC exchange, so you don't store `ROLLBAR_SERVER_TOKEN` in Vercel. The script mints a five minute resource token from Vercel with the build's `VERCEL_OIDC_TOKEN`, trades it at Rollbar for a server token that expires in an hour, and uploads with that.
+
 Add these environment variables in Vercel Project Settings:
 
-1. `ROLLBAR_SERVER_TOKEN` - Your server access token
+1. `ROLLBAR_VERCEL_RESOURCE_ID` - The id of your Rollbar resource in Vercel
 2. `BASE_URL` - Your Vercel deployment URL (e.g., `https://your-app.vercel.app`)
-3. `SOURCE_VERSION` - (Optional) Version tag for tracking (e.g., `1.0.0` or git commit SHA)
+3. `ROLLBAR_PROJECT` - (Optional) The Rollbar project name, only needed when your Rollbar resource has more than one connected project
+4. `SOURCE_VERSION` - (Optional) Version tag for tracking (e.g., `1.0.0` or git commit SHA)
+
+`ROLLBAR_SERVER_TOKEN` still works and takes priority when it is set.
 
 Update your Vercel build command to:
 ```bash
@@ -148,7 +153,7 @@ npm run build:production
 - Source maps are **only uploaded during production builds** using `npm run build:production`
 - Development builds (`npm run dev`) don't need source maps - they already have readable stack traces
 - Source maps are **not included** in your deployed bundle (they're uploaded to Rollbar separately)
-- Without `ROLLBAR_SERVER_TOKEN`, the build will still succeed but skip source map uploads
+- Without `ROLLBAR_SERVER_TOKEN` or `ROLLBAR_VERCEL_RESOURCE_ID`, the build will still succeed but skip source map uploads. A failed mint or exchange is logged and the build still succeeds.
 
 
 
